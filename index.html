@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>H2O Habits — Meta diária de água</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>H2O Habits 💧</h1>
+    <p class="subtitle">Transforme hidratação em rotina prazerosa.</p>
+  </header>
+
+  <main class="container">
+    <section class="card goal-card">
+      <div class="card-header">
+        <h2>Meta diária</h2>
+      </div>
+      <div class="goal-row">
+        <label class="sr-only" for="goalInput">Meta</label>
+        <input id="goalInput" type="number" min="100" step="50" inputmode="numeric" placeholder="2000" />
+        <select id="goalUnit">
+          <option value="ml">ml</option>
+          <option value="l">litros</option>
+        </select>
+        <button id="saveGoalBtn" class="primary">Salvar meta</button>
+      </div>
+      <p class="hint">Dica: 2.000 ml é uma boa referência — ajuste conforme sua necessidade.</p>
+    </section>
+
+    <section class="card progress-card">
+      <div class="card-header">
+        <h2>Progresso de hoje</h2>
+        <span id="todayDate"></span>
+      </div>
+
+      <div class="progress-overview">
+        <div class="progress-circle">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="44" class="track"></circle>
+            <circle cx="50" cy="50" r="44" class="bar" id="progressCircle"></circle>
+          </svg>
+          <div class="progress-label">
+            <div id="progressPercent">0%</div>
+            <small id="progressAmount">0 / 0 ml</small>
+          </div>
+        </div>
+        <div class="progress-actions">
+          <div class="quick-grid">
+            <button class="ghost" data-add="200">+200 ml</button>
+            <button class="ghost" data-add="250">+250 ml</button>
+            <button class="ghost" data-add="300">+300 ml</button>
+            <button class="ghost" data-add="500">+500 ml</button>
+          </div>
+          <div class="custom-row">
+            <input id="customAmount" type="number" min="50" step="10" placeholder="Digite ml" />
+            <button id="addCustomBtn" class="primary">Adicionar</button>
+            <button id="undoBtn" class="link">Desfazer último</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rewards" id="rewards">
+        <div class="badge" id="badgeStreak">🔥 Sequência: <span id="streakCount">0</span> dias</div>
+        <div class="badge" id="badgeGoals">🏆 Metas batidas: <span id="goalsCount">0</span></div>
+      </div>
+    </section>
+
+    <section class="card charts-card">
+      <div class="card-header">
+        <h2>Histórico</h2>
+        <div class="tabs">
+          <button class="tab active" data-range="week">Semanal</button>
+          <button class="tab" data-range="month">Mensal</button>
+        </div>
+      </div>
+      <canvas id="historyChart" height="140" aria-label="Gráfico de consumo de água"></canvas>
+    </section>
+
+    <section class="card reminders-card">
+      <div class="card-header">
+        <h2>Lembretes inteligentes</h2>
+      </div>
+      <div class="reminders-row">
+        <label for="reminderInterval">Intervalo</label>
+        <select id="reminderInterval">
+          <option value="0">Desativado</option>
+          <option value="30">A cada 30 min</option>
+          <option value="60">A cada 1 hora</option>
+          <option value="120">A cada 2 horas</option>
+        </select>
+        <button id="enableNotifBtn" class="primary">Ativar notificações</button>
+      </div>
+      <p class="hint">Receba alertas personalizados quando estiver longe da sua meta.</p>
+    </section>
+
+    <section class="card tips-card">
+      <div class="card-header">
+        <h2>Dicas de hidratação</h2>
+        <button id="newTipBtn" class="link">Outra dica</button>
+      </div>
+      <blockquote id="tipText">Beber água regularmente melhora foco e energia.</blockquote>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>Feito para o seu bem-estar. Beba água. 💧</small>
+  </footer>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "chart.js": "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js",
+      "confetti": "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.js",
+      "sql.js": "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"
+    }
+  }
+  </script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

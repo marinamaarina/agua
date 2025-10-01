@@ -1,0 +1,305 @@
+:root {
+  --bg: #f8f9fa;
+  --fg: #212529;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --accent: #007bff;
+  --accent-light: #e0f0ff;
+  --white: #fff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+html, body { 
+  height: 100%; 
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-header { 
+  padding: 32px 16px; 
+  text-align: center; 
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 { 
+  margin: 0; 
+  font-weight: 800; 
+  letter-spacing: -0.02em; 
+  font-size: 1.8rem;
+}
+
+.subtitle { 
+  margin: 8px 0 0; 
+  color: var(--muted); 
+  font-size: 1.1rem;
+}
+
+.container { 
+  max-width: 900px; 
+  margin: 0 auto; 
+  padding: 16px 16px 80px; 
+}
+
+.card { 
+  border: none;
+  border-radius: 16px; 
+  padding: 20px; 
+  margin: 16px 0; 
+  background: var(--white); 
+  box-shadow: var(--shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 8px; 
+  margin-bottom: 16px;
+}
+
+.card-header h2 { 
+  margin: 0; 
+  font-size: 1.2rem; 
+  font-weight: 600;
+}
+
+.hint { 
+  color: var(--muted); 
+  font-size: 0.9rem; 
+  margin-top: 12px; 
+  margin-bottom: 0;
+}
+
+.goal-row, .reminders-row, .custom-row { 
+  display: flex; 
+  gap: 12px; 
+  align-items: center; 
+  flex-wrap: wrap; 
+}
+
+input, select { 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  padding: 10px 12px; 
+  background: var(--bg); 
+  color: var(--fg); 
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+button { 
+  font: inherit;
+  border: 1px solid var(--border); 
+  background: var(--white); 
+  color: var(--fg); 
+  padding: 10px 16px; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-weight: 600;
+  transition: transform 150ms ease, background-color 150ms ease, color 150ms ease; 
+}
+
+button:hover { 
+  transform: translateY(-1px); 
+  border-color: #aaa;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.primary { 
+  background: var(--accent); 
+  color: var(--white); 
+  border-color: var(--accent); 
+}
+button.primary:hover {
+  background: #0056b3;
+  border-color: #0056b3;
+}
+
+button.ghost { 
+  background: var(--bg); 
+}
+button.ghost:hover {
+  background: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+button.link { 
+  background: transparent; 
+  border-color: transparent; 
+  color: var(--muted); 
+  text-decoration: none; 
+  font-weight: 400;
+}
+button.link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.progress-overview { 
+  display: grid; 
+  grid-template-columns: 160px 1fr; 
+  gap: 24px; 
+  align-items: center; 
+}
+
+.progress-circle { 
+  position: relative; 
+  width: 160px; 
+  height: 160px; 
+}
+
+.progress-circle svg { 
+  width: 100%; 
+  height: 100%; 
+  transform: rotate(-90deg); 
+}
+
+.progress-circle .track { 
+  fill: none; 
+  stroke: #eee; 
+  stroke-width: 12; 
+}
+
+.progress-circle .bar { 
+  fill: none; 
+  stroke: var(--accent); 
+  stroke-width: 12; 
+  stroke-linecap: round; 
+  stroke-dasharray: 276; 
+  stroke-dashoffset: 276; 
+  transition: stroke-dashoffset 400ms cubic-bezier(0.25, 0.1, 0.25, 1); 
+}
+
+.progress-label { 
+  position: absolute; 
+  inset: 0; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+}
+
+.progress-label div { 
+  font-size: 2rem; 
+  font-weight: 700; 
+}
+
+.progress-label small { 
+  color: var(--muted); 
+  font-size: 0.9rem;
+}
+
+.quick-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); 
+  gap: 12px; 
+}
+
+.custom-row { 
+  margin-top: 12px; 
+}
+
+.rewards { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+  margin-top: 16px; 
+}
+
+.badge { 
+  border: 1px solid var(--border); 
+  background-color: var(--bg);
+  border-radius: 8px; 
+  padding: 8px 12px; 
+  font-weight: 600; 
+  font-size: 0.9rem;
+}
+
+.tabs { 
+  display: flex; 
+  gap: 8px; 
+}
+
+.tab { 
+  padding: 8px 14px; 
+  border-radius: 8px; 
+  font-weight: 600;
+}
+
+.tab.active { 
+  background: var(--accent); 
+  color: var(--white); 
+  border-color: var(--accent); 
+}
+
+canvas { 
+  width: 100%; 
+}
+
+.app-footer { 
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  padding: 12px 16px; 
+  border-top: 1px solid var(--border); 
+  background: var(--white); 
+  text-align: center; 
+  color: var(--muted); 
+  font-size: 0.9rem;
+}
+
+.sr-only { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px; 
+  overflow: hidden; 
+  clip: rect(0, 0, 0, 0); 
+  border: 0; 
+}
+
+@media (max-width: 640px) {
+  .progress-overview { 
+    grid-template-columns: 1fr; 
+    gap: 16px;
+    text-align: center;
+  }
+  .progress-circle {
+    margin: 0 auto;
+  }
+  .quick-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .custom-row {
+    justify-content: center;
+  }
+}
